@@ -1,0 +1,1092 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Wedding website demo: Ada &amp; Tunde, Saturday, 13 February 2027, Lagos. Designed by Vincent Chukwu.">
+<meta name="theme-color" content="#4A1027">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://adatee-wedding.vercel.app">
+<meta property="og:title" content="Ada &amp; Tunde · Wedding website demo">
+<meta property="og:description" content="See what your wedding invite could look like. Want one like this? Chat with the designer.">
+<meta property="og:image" content="https://adatee-wedding.vercel.app/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Ada & Tunde Wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,400&family=Italiana&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: invitation-card rhythm. Sealed gate → curved photo reel hero → narrow text bands alternating with wide image/grid bands. Colours taken from the card: burgundy, onion pink, sky blue on blush. Single deliberate light look. */
+:root{
+  --paper:#F4EAE7;      /* blush ground */
+  --card:#FBF6F4;       /* raised panels */
+  --ink:#4A1027;        /* burgundy, text + dark bands */
+  --ink-soft:#7D5363;   /* secondary text */
+  --rose:#B0476F;       /* onion-pink deep, rules + accents */
+  --pink:#E5A3C1;       /* onion pink light, on dark */
+  --sky:#2FA3DA;        /* sky blue, ampersand only */
+  --line:#E3CFD0;
+  --wax:#6A1431;
+  --wax-rim:#84203F;
+  --dot:rgba(106,20,49,.13);
+  --on-dark:#E9D3DA;
+  --dark-line:#7A3A52;
+  --f-display:"Italiana","Didot","Bodoni 72",Georgia,serif;
+  --f-script:"Pinyon Script","Snell Roundhand","Apple Chancery",cursive;
+  --f-serif:"Cormorant Garamond",Georgia,serif;
+  --f-body:"Jost","Avenir Next","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-weight:300;font-size:17px;line-height:1.65}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:20px}
+.narrow{max-width:660px;margin-inline:auto}
+.eyebrow{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);font-weight:500}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.1}
+h2{font-size:clamp(34px,5vw,52px)}
+h3{font-size:26px}
+p{margin:0}
+section{padding-block:clamp(64px,10vw,112px)}
+.head{display:grid;gap:14px;text-align:center;justify-items:center;margin-bottom:48px}
+.rule{display:flex;justify-content:center;color:var(--rose)}
+
+.amp-dot{font-family:var(--f-serif);font-weight:500;font-size:30px;line-height:1}
+.muted{color:var(--ink-soft)}
+
+/* photo placeholders */
+.ph{position:relative;background:
+  repeating-linear-gradient(135deg,transparent 0 14px,rgba(176,71,111,.10) 14px 15px),
+  linear-gradient(160deg,#EAD6D8,#D9BFC5);
+  display:grid;place-items:center;max-width:100%;overflow:hidden}
+.ph::after{content:attr(data-label);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);background:var(--card);padding:6px 10px;border:1px solid var(--line)}
+.pic{display:block;width:100%;height:100%;object-fit:cover;max-width:100%}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(251,246,244,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:16px}
+.brand{text-decoration:none;font-family:var(--f-display);font-size:26px;letter-spacing:.06em;line-height:1;display:flex;align-items:baseline;gap:6px}
+.brand small{font-family:var(--f-serif);font-style:italic;font-size:18px;color:var(--rose)}
+.links{display:flex;gap:28px;list-style:none;margin:0;padding:0}
+.links a{text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+.links a:hover{color:var(--rose)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:500 13px/1 var(--f-body);letter-spacing:.18em;text-transform:uppercase;padding:16px 28px;border:1px solid var(--ink);background:var(--ink);color:var(--card);text-decoration:none;cursor:pointer;transition:background .2s,color .2s;border-radius:999px}
+.btn:hover{background:transparent;color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--card)}
+.btn.light{background:var(--card);color:var(--ink);border-color:var(--card)}
+.btn.light:hover{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.btn.sm{padding:11px 18px;font-size:12px}
+.menu-btn{display:none;background:none;border:1px solid var(--line);padding:9px 14px;font:500 12px var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--ink);cursor:pointer;border-radius:999px}
+@media (max-width:900px){
+  .menu-btn{display:block}
+  .nav .rsvp-top{display:none}
+  .links{position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:0;background:var(--card);border-bottom:1px solid var(--line);padding:8px 20px 16px;display:none}
+  .links.open{display:flex}
+  .links a{display:block;padding:12px 0;border-bottom:1px solid var(--line)}
+}
+
+/* HERO: big names over a curved, moving photo reel */
+.hero{padding-block:clamp(28px,5vw,48px) 56px;overflow:hidden}
+.hero-names{position:relative;z-index:1;text-align:center;font-size:clamp(46px,10vw,132px);line-height:.9;letter-spacing:.02em;color:var(--ink);display:flex;justify-content:center;align-items:center;gap:.18em;flex-wrap:wrap;padding-inline:16px}
+.hero-names .amp{display:inline-grid;place-items:center;width:.62em;height:.62em;border-radius:50%;background:var(--sky);color:#fff;font-family:var(--f-serif);font-size:.62em;line-height:1}
+.hero-names .amp span{font-size:.72em;transform:translateY(-.04em)}
+.reel{position:relative;z-index:2;height:calc(var(--cw)*1.9 + clamp(70px,9vw,170px));margin-top:clamp(-70px,-4vw,-24px);perspective:900px;perspective-origin:50% 50%;transform-style:preserve-3d;cursor:grab;touch-action:pan-y;user-select:none}
+.reel.drag{cursor:grabbing}
+.slide{position:absolute;left:50%;top:50%;width:var(--cw);height:calc(var(--cw)*1.9);margin-left:calc(var(--cw)/-2);margin-top:calc(var(--cw)*-.95);border-radius:18px;overflow:hidden;background:#2a0b18;box-shadow:0 18px 30px -18px rgba(74,16,39,.4);will-change:transform;backface-visibility:hidden}
+.slide img{width:100%;height:100%;object-fit:cover;pointer-events:none;display:block}
+.slide.ph{background:linear-gradient(160deg,#5a1730,#2e0918)}
+.slide.ph::after{background:rgba(255,255,255,.08);color:var(--on-dark);border-color:rgba(255,255,255,.2)}
+.reel{--cw:clamp(170px,19vw,330px)}
+.hero-cta{position:relative;z-index:5;display:flex;justify-content:center;margin-top:-34px}
+.hero-meta{margin-top:40px;display:grid;justify-items:center;gap:22px;text-align:center;padding-inline:16px}
+.when{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 22px;font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+.when span{display:flex;align-items:center;gap:22px}
+.when span+span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--rose)}
+.count{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);width:min(460px,100%)}
+.count div{text-align:center;padding:14px 4px}
+.count div+div{border-left:1px solid var(--line)}
+.count b{display:block;font-family:var(--f-display);font-weight:400;font-size:38px;font-variant-numeric:tabular-nums;line-height:1.1}
+.count small{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft)}
+
+/* invitation band */
+.invite{background:var(--ink);color:var(--card);text-align:center}
+.invite .eyebrow{color:var(--pink)}
+.fam{display:grid;gap:6px}
+.fam b{font-family:var(--f-display);font-weight:400;font-size:clamp(24px,3.4vw,34px);letter-spacing:.04em;color:var(--card)}
+.fam span{font-size:15px;color:var(--on-dark)}
+.invite .rule{color:var(--pink);margin:18px auto}
+.invite .cordially{margin-top:30px;font-family:var(--f-serif);font-style:italic;font-size:22px;color:var(--pink)}
+.invite .couple{margin-top:10px;font-family:var(--f-display);font-size:clamp(34px,6vw,64px);line-height:1.05}
+.invite .couple .amp{font-family:var(--f-script);color:var(--pink);font-size:.8em;display:block;margin-block:.05em}
+
+/* story: full-bleed cinematic scenes. A tall track pins the stage; each chapter is a
+   full-screen photo that opens through an arch-shaped iris over the previous one. */
+.story-track{position:relative;height:calc(var(--chapters) * 110svh)}
+.story-stage{position:sticky;top:72px;height:calc(100svh - 72px);overflow:hidden;background:#1a0710;color:#FBF3F6}
+.scene{position:absolute;inset:0;will-change:clip-path}
+.scene .bg{position:absolute;inset:-2%;width:104%;height:104%;object-fit:cover;object-position:50% 22%;will-change:transform}
+.scene .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,4,12,.86) 0%,rgba(20,4,12,.55) 38%,rgba(20,4,12,.05) 70%),linear-gradient(0deg,rgba(20,4,12,.7) 0%,transparent 45%)}
+.scene .tint{position:absolute;inset:0;mix-blend-mode:soft-light;opacity:.35}
+.sc-copy{position:absolute;left:clamp(20px,6vw,90px);bottom:clamp(70px,12vh,120px);max-width:min(560px,calc(100% - 40px));display:grid;gap:16px;z-index:3}
+.sc-copy .ch{font-size:12px;letter-spacing:.32em;text-transform:uppercase;font-weight:500;color:var(--pink);display:flex;align-items:center;gap:14px}
+.sc-copy .ch::after{content:"";width:60px;height:1px;background:currentColor;opacity:.6}
+.sc-title{font-family:var(--f-display);font-weight:400;font-size:clamp(50px,8.4vw,124px);line-height:.92;margin:0;letter-spacing:-.005em}
+.sc-title .ln{display:block;overflow:hidden;padding-bottom:.06em}
+.sc-title .ln>span{display:inline-block;will-change:transform}
+.sc-title em{font-family:var(--f-script);font-style:normal;color:var(--pink);font-size:1.02em;line-height:.8}
+.sc-copy p{font-size:clamp(15px,1.2vw,17px);line-height:1.7;color:#EBDCE2;max-width:46ch}
+.sc-cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px}
+.sc-date{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--pink)}
+.sc-arch{position:absolute;right:clamp(20px,7vw,120px);top:50%;width:clamp(170px,21vw,320px);aspect-ratio:3/4.4;border-radius:999px 999px 0 0;overflow:hidden;border:6px solid rgba(251,243,246,.92);box-shadow:0 40px 70px -30px rgba(0,0,0,.6);z-index:2;will-change:transform}
+.sc-arch img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.sc-num{position:absolute;right:clamp(20px,7vw,120px);bottom:clamp(14px,3vh,30px);font-family:var(--f-display);font-size:clamp(70px,11vw,170px);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(251,243,246,.55);z-index:1;font-variant-numeric:tabular-nums;will-change:transform}
+.st-rail{position:absolute;left:clamp(20px,6vw,90px);top:clamp(18px,4vh,36px);right:clamp(20px,6vw,90px);display:flex;align-items:center;gap:14px;z-index:6;font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.st-rail .t{opacity:.85}
+.st-bar{flex:1;height:1px;background:rgba(251,243,246,.25);position:relative}
+.st-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--pink)}
+.st-rail ol{display:flex;gap:18px;list-style:none;margin:0;padding:0;font-variant-numeric:tabular-nums}
+.st-rail li{opacity:.4;transition:opacity .3s}
+.st-rail li.on{opacity:1;color:var(--pink)}
+.st-hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:11px;letter-spacing:.3em;text-transform:uppercase;opacity:.7;z-index:6;transition:opacity .4s}
+@media (max-width:760px){
+  .story-track{height:calc(var(--chapters) * 110svh)}
+  .scene .shade{background:linear-gradient(0deg,rgba(20,4,12,.92) 0%,rgba(20,4,12,.6) 42%,rgba(20,4,12,.05) 70%)}
+  .sc-arch{top:64px;right:16px;width:34vw;border-width:4px;--ay:0%}
+  .sc-num{display:none}
+  .sc-copy{bottom:76px}
+  .sc-copy .ch{letter-spacing:.2em;font-size:11px}
+  .sc-copy .ch::after{display:none}
+  .st-rail ol,.st-rail .t{display:none}
+  .st-hint{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .story-track{height:auto}.story-stage{position:relative;top:0;height:auto}
+  .scene{position:relative;height:90svh;clip-path:none!important}
+  .st-rail,.st-hint{display:none}
+}
+/* events */
+.band{background:var(--card);border-block:1px solid var(--line)}
+.events{display:grid;grid-template-columns:repeat(2,1fr);border:1px solid var(--line);background:var(--paper)}
+.event{padding:40px 34px;display:grid;gap:14px;align-content:start;min-width:0}
+.event+.event{border-left:1px solid var(--line)}
+.pill{justify-self:start;border:1px solid var(--rose);color:var(--rose);border-radius:999px;padding:6px 16px;font-size:13px;letter-spacing:.06em}
+.event dl{margin:6px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 18px;font-size:16px}
+.event dt{color:var(--ink-soft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding-top:3px}
+.event dd{margin:0}
+.timeline{margin-top:56px;display:grid;grid-template-columns:repeat(5,1fr);position:relative}
+.timeline::before{content:"";position:absolute;left:10%;right:10%;top:7px;height:1px;background:var(--rose)}
+.t{text-align:center;display:grid;gap:6px;justify-items:center;position:relative;padding-inline:6px}
+.t i{width:15px;height:15px;border-radius:50%;background:var(--card);border:1px solid var(--rose)}
+.t b{font-weight:500;font-size:14px;font-variant-numeric:tabular-nums;letter-spacing:.06em}
+.t span{font-size:14px;color:var(--ink-soft);line-height:1.35}
+.draft{text-align:center;margin-top:18px;font-size:13px;color:var(--ink-soft)}
+@media (max-width:820px){
+  .events{grid-template-columns:1fr}.event+.event{border-left:0;border-top:1px solid var(--line)}
+  .timeline{grid-template-columns:1fr;gap:0;margin-top:36px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 22px 8px}
+  .timeline::before{left:29px;right:auto;top:30px;bottom:62px;width:1px;height:auto}
+  .t{grid-template-columns:15px 1fr;grid-template-areas:"dot time" "dot what";justify-items:start;text-align:left;column-gap:18px;row-gap:2px;align-items:center;padding:0 0 18px;padding-inline:0}
+  .t i{grid-area:dot;align-self:start;margin-top:3px;background:var(--rose);border-color:var(--rose);box-shadow:0 0 0 4px var(--paper)}
+  .t b{grid-area:time;font-size:13px;letter-spacing:.14em;color:var(--rose)}
+  .t span{grid-area:what;font-size:16px;color:var(--ink)}
+}
+
+/* venues */
+.venues{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.venue{display:grid;grid-template-rows:auto 1fr;border:1px solid var(--line);background:var(--card);border-radius:14px;overflow:hidden;min-width:0}
+.venue .ph{aspect-ratio:16/9}
+.venue .info{padding:30px;display:grid;gap:14px;align-content:start}
+.venue address{font-style:normal;color:var(--ink-soft)}
+@media (max-width:760px){.venues{grid-template-columns:1fr}}
+
+/* colours of the day */
+.colours{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.chip{display:grid;justify-items:center;gap:12px;width:150px}
+.chip i{width:100%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(74,16,39,.12);box-shadow:inset 0 -10px 20px rgba(0,0,0,.06)}
+.chip span{font-size:13px;letter-spacing:.16em;text-transform:uppercase}
+@media (max-width:520px){.colours{gap:10px}.chip{width:calc(33.33% - 8px);max-width:110px;gap:8px}.chip span{font-size:10px;letter-spacing:.1em;text-align:center}}
+.colour-note{text-align:center;margin-top:36px}
+
+/* gallery: a dark exhibition hall. Scrolling down walks you sideways past four looks. */
+.gal{padding:0;background:#170710;color:#F6E7EC}
+.gal-track{position:relative}
+.gal-stage{position:sticky;top:72px;height:calc(100svh - 72px);overflow:hidden;display:grid;grid-template-rows:auto minmax(0,1fr) auto;grid-template-columns:minmax(0,1fr)}
+.gal-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;padding:clamp(20px,4vh,40px) clamp(20px,6vw,90px) 0;flex-wrap:wrap}
+.gal-top .eyebrow{color:var(--pink)}
+.gal-top h2{font-size:clamp(44px,6vw,84px);line-height:1}
+.gal-top h2 em{font-family:var(--f-script);font-style:normal;color:var(--pink)}
+.gal-meta{font-size:12px;letter-spacing:.24em;text-transform:uppercase;opacity:.7;text-align:right;display:grid;gap:6px}
+.gal-row{display:flex;align-items:center;gap:clamp(16px,2vw,28px);padding-inline:clamp(20px,6vw,90px);height:100%;will-change:transform;width:max-content}
+.gal-label{flex:none;width:clamp(220px,22vw,320px);height:46svh;display:grid;align-content:end;gap:10px;border-left:1px solid rgba(246,231,236,.25);padding-left:22px;margin-left:clamp(20px,4vw,60px)}
+.gal-label:first-child{margin-left:0}
+.gal-label .n{font-family:var(--f-display);font-size:clamp(70px,8vw,120px);line-height:.8;color:transparent;-webkit-text-stroke:1px rgba(246,231,236,.5)}
+.gal-label h3{font-size:clamp(30px,3vw,44px);line-height:1.02}
+.gal-label h3 em{font-family:var(--f-script);font-style:normal;color:var(--pink);font-size:1.1em}
+.gal-label p{font-size:14px;opacity:.7;max-width:26ch}
+.gal .g{flex:none;position:relative;padding:0;border:0;background:#2a0b18;border-radius:6px;overflow:hidden;cursor:zoom-in;aspect-ratio:4/5;height:44svh;max-width:none}
+.gal .g.gt{height:56svh}.gal .g.gs{height:34svh}.gal .g.gw{aspect-ratio:1.19}
+.gal .g.up{transform:translateY(-5svh)}.gal .g.dn{transform:translateY(5svh)}
+.gal .g img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1),filter .5s}
+.gal .g:hover img{transform:scale(1.06)}
+.gal .g .cap{position:absolute;left:12px;bottom:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.6);opacity:.85}
+.gal-foot{display:flex;align-items:center;gap:18px;padding:0 clamp(20px,6vw,90px) clamp(18px,3vh,30px);font-size:11px;letter-spacing:.24em;text-transform:uppercase}
+.gal-bar{flex:1;height:1px;background:rgba(246,231,236,.2);position:relative}
+.gal-bar i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--pink)}
+@media (prefers-reduced-motion:reduce){
+  .gal-stage{position:relative;top:0;height:auto;padding-bottom:20px}
+  .gal-row{width:auto;height:auto;overflow-x:auto;scroll-snap-type:x mandatory;padding-block:28px;align-items:stretch;transform:none!important;-webkit-overflow-scrolling:touch}
+  .gal .g,.gal .g.gt,.gal .g.gs{height:min(110vw,460px);transform:none;scroll-snap-align:center}
+  .gal .g.gw{height:min(70vw,300px)}
+  .gal-label{height:auto;align-self:center;width:200px;scroll-snap-align:start}
+  .gal-bar{display:none}
+  .gal-meta{text-align:left}
+}
+
+/* rsvp */
+.rsvp{background:var(--ink);color:var(--card)}
+.rsvp .eyebrow{color:var(--pink)}
+.rsvp .head p{color:var(--on-dark)}
+.phones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-bottom:48px}
+.phone{display:flex;align-items:center;gap:14px;border:1px solid var(--dark-line);border-radius:999px;padding:8px 8px 8px 22px}
+.phone b{font-family:var(--f-body);font-weight:400;font-size:22px;letter-spacing:.06em;font-variant-numeric:tabular-nums;user-select:all}
+.phone button{font:500 11px var(--f-body);letter-spacing:.14em;text-transform:uppercase;background:var(--card);color:var(--ink);border:0;border-radius:999px;padding:10px 14px;cursor:pointer}
+.or{text-align:center;font-family:var(--f-serif);font-style:italic;font-size:20px;color:var(--pink);margin-bottom:28px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:720px;margin-inline:auto}
+.field{display:grid;gap:8px;min-width:0}
+.field.full{grid-column:1/-1}
+label,.legend{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--on-dark)}
+input,select,textarea{font:300 16px var(--f-body);color:var(--card);background:transparent;border:0;border-bottom:1px solid var(--dark-line);padding:10px 0;width:100%;border-radius:0}
+input::placeholder,textarea::placeholder{color:#B58C9C}
+select option{color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--pink)}
+textarea{resize:vertical;min-height:80px}
+.choice{display:flex;gap:10px;flex-wrap:wrap}
+.choice label{display:flex;align-items:center;gap:10px;border:1px solid var(--dark-line);border-radius:999px;padding:12px 18px;cursor:pointer;text-transform:none;letter-spacing:.02em;font-size:15px;color:var(--card)}
+.choice input{width:auto;accent-color:var(--pink)}
+.choice label:has(input:checked){border-color:var(--pink);background:rgba(229,163,193,.12)}
+.rsvp form .btn{justify-self:center;grid-column:1/-1}
+.thanks{text-align:center;display:grid;gap:12px;max-width:520px;margin-inline:auto}
+.thanks .s{font-family:var(--f-script);font-size:56px;color:var(--pink);line-height:1}
+.note{grid-column:1/-1;text-align:center;font-size:13px;color:#B58C9C}
+@media (max-width:600px){form{grid-template-columns:1fr}.phone b{font-size:19px}}
+
+/* gifts */
+.gifts{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.gift{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:32px;display:grid;gap:14px;align-content:start;min-width:0}
+.acct{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px}
+.acct dt{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-soft);padding-top:2px}
+.acct dd{margin:0;font-variant-numeric:tabular-nums}
+@media (max-width:680px){.gifts{grid-template-columns:1fr}}
+
+/* faq */
+.faq details{border-bottom:1px solid var(--line)}
+.faq details:first-child{border-top:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;padding:22px 0;font-family:var(--f-display);font-size:22px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--rose);font-family:var(--f-body);font-size:24px;line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{padding:0 0 22px;color:var(--ink-soft);max-width:60ch}
+
+/* footer: closing credits */
+.foot{background:var(--ink);color:#F6E7EC;padding-block:0 84px;overflow:hidden}
+.mq{display:flex;width:max-content;animation:mq 38s linear infinite;padding-block:34px;border-bottom:1px solid rgba(246,231,236,.15)}
+.mq span{font-family:var(--f-display);font-size:clamp(54px,9vw,130px);line-height:1;white-space:nowrap;padding-right:.5em;display:flex;align-items:center;gap:.5em}
+.mq em{font-family:var(--f-script);font-style:normal;color:var(--pink)}
+.mq b{font-weight:400;font-size:.35em;color:var(--pink)}
+@keyframes mq{to{transform:translateX(-50%)}}
+.foot-main{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:clamp(24px,4vw,56px);padding-block:clamp(44px,7vw,80px)}
+.foot-main>*{min-width:0}
+.foot-sign{display:grid;gap:18px;align-content:start}
+.seal-mini{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle at 38% 32%,#A03356 0%,var(--wax-rim) 38%,var(--wax) 72%);box-shadow:0 10px 20px -6px rgba(0,0,0,.5),inset 0 -4px 8px rgba(0,0,0,.25)}
+.seal-mini::after{content:"";position:absolute;inset:12px;border-radius:50%;border:1px solid rgba(229,163,193,.7)}
+.seal-mini span{font-family:var(--f-serif);font-size:24px;color:#F7E4EB;display:flex;align-items:center}
+.seal-mini i{font-style:normal;font-size:.55em;margin:0 .05em;transform:translateY(-.25em)}
+.foot-sign p{font-family:var(--f-serif);font-style:italic;font-size:clamp(22px,2.2vw,28px);line-height:1.3;color:#F6E7EC;max-width:18ch}
+.foot-sign .days{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--pink)}
+.foot-col{display:grid;gap:10px;align-content:start;font-size:15px;line-height:1.6;color:#E3CCD5}
+.foot-col h4{margin:0 0 6px;font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--pink)}
+.foot-col a{text-decoration:none}.foot-col a:hover{color:#fff}
+.foot-col b{font-weight:400;font-size:18px;letter-spacing:.04em;color:#fff;font-variant-numeric:tabular-nums}
+.foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;border-top:1px solid rgba(246,231,236,.15);padding-top:22px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#C9A9B6}
+.foot-bottom .hash{font-family:var(--f-display);font-size:22px;letter-spacing:.06em;text-transform:none;color:#fff}
+.totop{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:#F6E7EC;border:1px solid rgba(246,231,236,.3);border-radius:999px;padding:10px 16px}
+.totop:hover{background:#F6E7EC;color:var(--ink)}
+@media (max-width:860px){.foot-main{grid-template-columns:1fr 1fr}.foot-sign{grid-column:1/-1}}
+@media (max-width:480px){.foot-main{grid-template-columns:1fr}}
+
+/* couple */
+.pair{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(20px,4vw,48px);align-items:center;max-width:920px;margin-inline:auto}
+.person{margin:0;display:grid;gap:22px;text-align:center;min-width:0}
+.arch{aspect-ratio:4/5;border-radius:999px 999px 14px 14px;overflow:hidden;max-width:100%;box-shadow:0 30px 50px -30px rgba(74,16,39,.5)}
+.arch .pic{object-position:50% 20%}
+.person figcaption{display:grid;gap:8px;justify-items:center}
+.role{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--rose);font-weight:500}
+.person p{max-width:34ch}
+.pair-amp{font-family:var(--f-serif);font-weight:500;font-size:clamp(60px,9vw,110px);color:var(--rose);line-height:1}
+@media (max-width:700px){.pair{grid-template-columns:1fr}.pair-amp{font-size:64px}.arch{max-width:340px;margin-inline:auto}}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(28,6,15,.94);display:grid;place-items:center;padding:calc(56px + env(safe-area-inset-top,0px)) 16px calc(56px + env(safe-area-inset-bottom,0px))}
+.lb[hidden]{display:none!important}
+.lb img{max-width:min(100%,1100px);max-height:100%;object-fit:contain;border-radius:6px}
+.lb-x{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:16px;background:none;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:9px 16px;font:500 12px var(--f-body);letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.25);color:#fff;font-size:28px;line-height:1;cursor:pointer}
+.lb-nav.prev{left:16px}.lb-nav.next{right:16px}
+.lb-dl{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));left:16px;background:var(--pink);border:0;color:var(--ink);border-radius:999px;padding:10px 18px;font:500 12px var(--f-body);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;z-index:2}
+.lb-dl:disabled{opacity:.6}
+.lb-count{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom,0px));left:0;right:0;text-align:center;color:#E9D3DA;font-size:13px;letter-spacing:.2em}
+.slide img{object-position:50% 50%}
+
+.acct{grid-template-columns:auto 1fr!important;gap:12px 20px!important;align-items:center}
+.acct dd.num{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:19px;letter-spacing:.04em;user-select:all}
+.mini{font:500 11px var(--f-body);letter-spacing:.14em;text-transform:uppercase;background:transparent;color:var(--rose);border:1px solid var(--rose);border-radius:999px;padding:6px 12px;cursor:pointer;user-select:none}
+.mini:hover{background:var(--rose);color:var(--card)}
+.gift .pill{margin-bottom:2px}
+.gift-note{text-align:center;margin-top:28px}
+@media (max-width:600px){.when{flex-direction:column;align-items:center;text-align:center;gap:6px;letter-spacing:.16em}.when span{justify-content:center}.when span+span::before{display:none}}
+h1,h2,h3{font-variant-ligatures:no-common-ligatures no-discretionary-ligatures}
+.h-amp{font-family:var(--f-serif);font-style:normal;font-weight:500;color:var(--rose);font-size:.95em;margin-inline:.06em}
+.q{margin:0;max-width:38ch;font-family:var(--f-serif);font-style:italic;font-size:clamp(18px,1.6vw,21px);line-height:1.55;color:var(--ink);position:relative;padding-top:26px}
+.q::before{content:"\201C";position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-family:var(--f-serif);font-size:64px;line-height:1;color:var(--rose);opacity:.5;font-style:normal}
+.q cite{display:block;margin-top:14px;font-family:var(--f-body);font-style:normal;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--rose)}
+/* ---------- polish + phone layout ---------- */
+.af{font-family:var(--f-serif)!important;font-style:normal;font-weight:500;color:var(--pink);margin-inline:.08em;font-size:1em}
+.invite .couple .amp{font-family:var(--f-serif);font-style:normal;font-weight:500;font-size:.8em;line-height:1.1}
+.fam .af{color:var(--pink);font-size:1.3em;line-height:0;vertical-align:-.04em}
+.faq summary{font-family:var(--f-serif);font-weight:500;font-size:clamp(19px,1.8vw,22px);line-height:1.35;align-items:center}
+@media (max-width:600px){
+  section{padding-block:56px}
+  .head{margin-bottom:32px}
+  /* hero */
+  .hero{padding-block:18px 40px}
+  .hero-names{font-size:clamp(44px,13.5vw,64px);flex-direction:column;gap:.04em;line-height:.92}
+  .hero-names .amp{width:.7em;height:.7em;font-size:.62em;margin-block:.06em}
+  .reel{--cw:clamp(190px,54vw,300px);margin-top:-14px}
+  .hero-cta{margin-top:-26px}
+  .hero-meta{margin-top:30px}
+  .count b{font-size:32px}
+  /* invitation */
+  .fam b{font-size:23px}
+  .fam span{font-size:14px}
+  .invite .cordially{font-size:20px}
+  /* couple */
+  .pair{gap:28px;justify-items:center}.pair-amp{font-size:54px;margin-block:-10px;justify-self:center;text-align:center;width:100%}
+  .arch{max-width:300px}
+  /* story */
+  .sc-arch{display:none}
+  .sc-copy{bottom:84px;gap:12px}
+  .sc-title{font-size:clamp(44px,13vw,60px)}
+  .sc-copy p{font-size:15px;line-height:1.65}
+  .scene .bg{object-position:50% 18%}
+  /* events */
+  .event{padding:28px 22px}
+  .event dl{grid-template-columns:1fr;gap:2px}
+  .event dt{padding-top:10px}
+  /* registry */
+  .gift{padding:26px 22px}
+  .acct{grid-template-columns:1fr!important;gap:2px!important}
+  .acct dt{padding-top:12px}
+  .acct dd.num{font-size:20px}
+  /* rsvp */
+  .choice label{flex:1 1 100%;justify-content:flex-start}
+  .phone b{font-size:20px}
+  /* music: compact disc only */
+  .music{padding:5px;gap:0}
+  .music .bars{display:none}
+  .music .disc{width:40px;height:40px}
+  .foot{padding-bottom:90px}
+}
+/* gallery on portrait screens (phones): pinned film strip of big photos.
+   Scrolling down slides the strip sideways; the page continues once the last photo has passed. */
+@media (orientation:portrait) and (max-width:900px){
+  .gal-stage{grid-template-rows:auto auto auto;align-content:center;row-gap:28px}
+  .gal-top{padding:0 7vw;display:grid;gap:8px}
+  .gal-top h2{font-size:clamp(44px,11vw,64px)}
+  .gal-meta{text-align:left;font-size:11px;gap:6px}
+  .gal-row{gap:14px;padding-inline:7vw;align-items:center;height:auto}
+  .gal-label{width:0;min-width:0;padding:0;margin:0!important;border:0;overflow:hidden;opacity:0;flex:none}
+  .gal .g,.gal .g.gt,.gal .g.gs{height:min(60svh,107.5vw);transform:none!important;border-radius:10px}
+  .gal .g.gw{height:min(46svh,72vw)}
+  .gal .g .cap{left:16px;bottom:14px;font-size:12px}
+  .gal-foot{padding:0 7vw;font-size:11px;gap:14px}
+}
+/* scratch-to-reveal date card */
+.scratch{position:relative;width:min(440px,100%);aspect-ratio:2.1;margin-top:10px;border-radius:18px;overflow:hidden;background:radial-gradient(120% 140% at 50% 0%,#6A1431,var(--ink) 70%);box-shadow:0 24px 40px -24px rgba(74,16,39,.55);user-select:none}
+.scratch-date{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:6px;color:#FBF3F6;text-align:center;padding:16px}
+.sd-day{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--pink)}
+.sd-big{font-family:var(--f-display);font-size:clamp(34px,8.5vw,50px);line-height:1;letter-spacing:.02em;white-space:nowrap}
+.sd-big i{font-family:var(--f-script);font-style:normal;color:var(--pink);font-size:1.05em;margin-inline:.1em}
+.sd-time{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#E3CCD5}
+.scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .8s ease}
+.scratch canvas.done{opacity:0;pointer-events:none}
+.scratch.revealed{animation:pop .6s ease}
+@keyframes pop{50%{transform:scale(1.03)}}
+.scratch-hint{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-soft);transition:opacity .4s}
+.credit{margin:22px auto 0;padding-inline:20px;text-align:center;font-size:12px;letter-spacing:.04em;line-height:1.7;color:rgba(246,231,236,.45);max-width:640px}
+.credit span{color:var(--pink)}
+.credit a{color:rgba(246,231,236,.8);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;white-space:nowrap}
+.credit a:hover{color:#fff}
+/* sealed gate */
+body.sealed{overflow:hidden}
+.gate{position:fixed;inset:0;z-index:100;display:grid;place-items:center;perspective:1800px}
+.gate[hidden]{display:none!important}
+.door{position:absolute;top:0;bottom:0;width:50%;background-color:var(--paper);
+  background-image:radial-gradient(var(--dot) 1.1px,transparent 1.3px);background-size:22px 22px;
+  transition:transform 1.4s cubic-bezier(.7,0,.2,1),box-shadow 1.4s}
+.door.l{left:0;transform-origin:left center;border-right:1px solid rgba(106,20,49,.28);background-position:11px 11px}
+.door.r{right:0;transform-origin:right center;border-left:1px solid rgba(255,255,255,.4)}
+.door::after{content:"";position:absolute;inset:0;pointer-events:none}
+.door.l::after{background:linear-gradient(to right,transparent 70%,rgba(74,16,39,.06))}
+.door.r::after{background:linear-gradient(to left,transparent 70%,rgba(74,16,39,.06))}
+.gate.open .door.l{transform:rotateY(-105deg);box-shadow:30px 0 60px rgba(74,16,39,.15)}
+.gate.open .door.r{transform:rotateY(105deg);box-shadow:-30px 0 60px rgba(74,16,39,.15)}
+.gate-center{position:relative;z-index:2;display:grid;justify-items:center;gap:30px;transition:opacity .5s,transform .6s}
+.gate.open .gate-center{opacity:0;transform:scale(.85)}
+.seal{width:176px;height:176px;border-radius:50%;border:0;padding:0;cursor:pointer;position:relative;
+  background:radial-gradient(circle at 38% 32%,#A03356 0%,var(--wax-rim) 38%,var(--wax) 72%);
+  box-shadow:0 18px 30px -8px rgba(74,16,39,.45),0 4px 8px rgba(74,16,39,.25),inset 0 2px 3px rgba(255,210,225,.18),inset 0 -6px 12px rgba(0,0,0,.25);
+  display:grid;place-items:center;transition:transform .35s ease;animation:breathe 3.2s ease-in-out infinite}
+.seal::before{content:"";position:absolute;inset:11px;border-radius:50%;background:radial-gradient(circle at 45% 40%,#7A1A3B,#5C0F2A 75%);box-shadow:inset 0 3px 6px rgba(0,0,0,.3),0 1px 0 rgba(255,200,220,.12)}
+.seal::after{content:"";position:absolute;inset:26px;border-radius:50%;border:1px solid rgba(229,163,193,.75)}
+.seal:hover{transform:scale(1.04) rotate(-2deg)}
+.seal:focus-visible{outline:2px solid var(--wax);outline-offset:6px}
+.mono-seal{position:relative;z-index:1;color:#F7E4EB;font-family:var(--f-serif);font-weight:500;font-size:50px;line-height:1;text-shadow:0 1px 1px rgba(0,0,0,.35);display:flex;align-items:center}
+.mono-seal i{font-style:normal;font-weight:500;font-size:.52em;margin:0 .06em;transform:translateY(-.25em)}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025)}}
+.gate-hint{text-align:center;font-weight:400;font-size:14px;letter-spacing:.3em;line-height:2.3;text-transform:uppercase;color:var(--wax);padding-inline:16px}
+@media (max-width:480px){.seal{width:140px;height:140px}.mono-seal{font-size:40px}.seal::after{inset:21px}.gate-hint{font-size:12px;letter-spacing:.24em}}
+
+@keyframes rise{from{transform:translateY(16px)}to{transform:none}}
+body:not(.sealed) .hero-names{animation:rise .9s ease-out both}
+</style>
+</head>
+<body>
+
+
+<div class="gate" id="gate">
+  <div class="door l" aria-hidden="true"></div>
+  <div class="door r" aria-hidden="true"></div>
+  <div class="gate-center">
+    <button class="seal" id="seal" type="button" aria-label="Open the invitation from Ada and Tunde">
+      <span class="mono-seal">A<i>&amp;</i>T</span>
+    </button>
+    <p class="gate-hint">Tap the seal<br>to open our invitation</p>
+  </div>
+</div>
+
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a href="#home" class="brand" aria-label="AdaTee 27, home">ADATEE<small>’27</small></a>
+    <ul class="links" id="links">
+      <li><a href="#invitation">Invitation</a></li>
+      <li><a href="#couple">Couple</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#events">The Day</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#gifts">Registry</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#rsvp" class="btn sm rsvp-top">RSVP</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="links">Menu</button>
+  </div>
+</nav>
+
+<main id="home">
+  <!-- HERO -->
+  <section class="hero" aria-label="Ada and Tunde">
+    <h1 class="hero-names">ADA <span class="amp" aria-label="and"><span>&amp;</span></span> TUNDE</h1>
+    <div class="reel" id="reel" aria-label="Photos of Ada and Tunde">
+      <div class="slide"><img src="img/d/09.jpg" alt="Couple in Igbo traditional attire" draggable="false"></div>
+      <div class="slide"><img src="img/d/02.jpg" alt="Couple in white shirts and denim" draggable="false"></div>
+      <div class="slide"><img src="img/d/17.jpg" alt="Couple in burgundy aso-oke" draggable="false"></div>
+      <div class="slide"><img src="img/d/03.jpg" alt="Couple in red and black" draggable="false"></div>
+      <div class="slide"><img src="img/d/05.jpg" alt="Couple in white tees and denim" draggable="false"></div>
+      <div class="slide"><img src="img/d/15.jpg" alt="Couple in matching lion print" draggable="false"></div>
+      <div class="slide"><img src="img/d/08.jpg" alt="Couple in matching brown" draggable="false" loading="lazy"></div>
+      <div class="slide"><img src="img/d/16.jpg" alt="Couple in red traditional attire" draggable="false" loading="lazy"></div>
+      <div class="slide"><img src="img/d/04.jpg" alt="Couple in white shirts, arm in arm" draggable="false" loading="lazy"></div>
+      <div class="slide"><img src="img/d/18.jpg" alt="Couple in red aso-oke" draggable="false" loading="lazy"></div>
+      <div class="slide"><img src="img/d/06.jpg" alt="Couple in white shirts and denim" draggable="false" loading="lazy"></div>
+      <div class="slide"><img src="img/d/07.jpg" alt="Couple in all white, embracing" draggable="false" loading="lazy"></div>
+      <div class="slide"><img src="img/d/01.jpg" alt="Couple in all white, seated" draggable="false" loading="lazy"></div>
+    </div>
+    <div class="hero-cta"><a href="#invitation" class="btn">View wedding invitation</a></div>
+    <div class="hero-meta">
+      <div class="when"><span>Saturday, 13 February 2027</span><span>10AM prompt</span><span>Lekki, Lagos</span></div>
+      <div class="count" aria-label="Countdown to the wedding">
+        <div><b id="cd-d">00</b><small>Days</small></div>
+        <div><b id="cd-h">00</b><small>Hours</small></div>
+        <div><b id="cd-m">00</b><small>Mins</small></div>
+        <div><b id="cd-s">00</b><small>Secs</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INVITATION -->
+  <section class="invite" id="invitation">
+    <div class="wrap narrow">
+      <p class="eyebrow" style="margin-bottom:26px">The families of</p>
+      <div class="fam"><b>Mr. <span class="af">&amp;</span> Mrs. Emeka Okafor</b><span>of Nnewi, Anambra State</span></div>
+      <div class="rule"><span class="amp-dot">&amp;</span></div>
+      <div class="fam"><b>Mr. <span class="af">&amp;</span> Mrs. Adewale Bakare</b><span>of Abeokuta, Ogun State</span></div>
+      <p class="cordially">cordially invite you to the wedding of</p>
+      <h2 class="couple">Ada Okafor<span class="amp">&amp;</span>Tunde Bakare</h2>
+    </div>
+  </section>
+
+  <!-- COUPLE -->
+  <section id="couple">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Meet the couple</p>
+        <h2>The Bride <span class="h-amp">&amp;</span> The Groom</h2>
+      </div>
+      <div class="pair">
+        <figure class="person">
+          <div class="arch"><img class="pic" src="img/d/12.jpg" alt="The bride" loading="lazy"></div>
+          <figcaption>
+            <span class="role">The Bride</span>
+            <h3>Ada Okafor</h3>
+            <blockquote class="q">She laughs with her whole chest, plans everything and still makes room for surprises. She’s kind, brilliant and fiercely loyal, and every day with her feels like home.<cite>In Tunde’s words</cite></blockquote>
+          </figcaption>
+        </figure>
+        <span class="pair-amp" aria-hidden="true">&amp;</span>
+        <figure class="person">
+          <div class="arch"><img class="pic" src="img/d/14.jpg" alt="The groom" loading="lazy"></div>
+          <figcaption>
+            <span class="role">The Groom</span>
+            <h3>Tunde Bakare</h3>
+            <blockquote class="q">He is calm when I’m not, patient when I need it and always the first to make me laugh. With him, love feels easy, safe and full of good food and good music.<cite>In Ada’s words</cite></blockquote>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY -->
+  <section id="story" style="padding:0">
+    <div class="story-track" id="storyTrack" style="--chapters:5">
+      <div class="story-stage" id="storyStage">
+        <div class="scene" data-i="0">
+          <img class="bg" src="img/d/02-lg.jpg" alt="" >
+          <div class="tint" style="background:#7d8db8"></div>
+          <div class="shade"></div>
+          <div class="sc-arch"><img src="img/d/06.jpg" alt="" loading="lazy"></div>
+          <div class="sc-num" aria-hidden="true">2019</div>
+          <div class="sc-copy">
+            <span class="ch">Chapter one · 2019</span>
+            <h3 class="sc-title"><span class="ln"><span>Where it all</span></span><span class="ln"><span><em>began</em></span></span></h3>
+            <p>Every beautiful story has a beginning, and ours began at a friend’s birthday in 2019. One shared plate of jollof turned into a long conversation, and that conversation never really ended.</p>
+          </div>
+        </div>
+        <div class="scene" data-i="1">
+          <img class="bg" src="img/d/05-lg.jpg" alt="" loading="lazy">
+          <div class="tint" style="background:#e0703a"></div>
+          <div class="shade"></div>
+          <div class="sc-arch"><img src="img/d/04.jpg" alt="" loading="lazy"></div>
+          <div class="sc-num" aria-hidden="true">2020</div>
+          <div class="sc-copy">
+            <span class="ch">Chapter two · 2020 – 2021</span>
+            <h3 class="sc-title"><span class="ln"><span>Growing</span></span><span class="ln"><span><em>together</em></span></span></h3>
+            <p>Late-night calls, Sunday hangouts and plenty of laughter. Through lockdowns and long distance, our friendship deepened and we learned how to show up for each other.</p>
+          </div>
+        </div>
+        <div class="scene" data-i="2">
+          <img class="bg" src="img/d/08-lg.jpg" alt="" loading="lazy">
+          <div class="tint" style="background:#8d4fc4"></div>
+          <div class="shade"></div>
+          <div class="sc-arch"><img src="img/d/07.jpg" alt="" loading="lazy"></div>
+          <div class="sc-num" aria-hidden="true">2022</div>
+          <div class="sc-copy">
+            <span class="ch">Chapter three · 2022</span>
+            <h3 class="sc-title"><span class="ln"><span>Choosing each</span></span><span class="ln"><span><em>other</em></span></span></h3>
+            <p>New jobs, new cities and new dreams. Life didn’t always follow our plans, but through every change we kept choosing each other, again and again.</p>
+          </div>
+        </div>
+        <div class="scene" data-i="3">
+          <img class="bg" src="img/d/09-lg.jpg" alt="" loading="lazy">
+          <div class="tint" style="background:#b0283a"></div>
+          <div class="shade"></div>
+          <div class="sc-arch"><img src="img/d/15.jpg" alt="" loading="lazy"></div>
+          <div class="sc-num" aria-hidden="true">2024</div>
+          <div class="sc-copy">
+            <span class="ch">Chapter four · 2024 – 2026</span>
+            <h3 class="sc-title"><span class="ln"><span>Forever felt</span></span><span class="ln"><span><em>real</em></span></span></h3>
+            <p>On a quiet evening by the beach, Tunde asked the big question and Ada said yes before he finished. Forever stopped being an idea and became a plan.</p>
+          </div>
+        </div>
+        <div class="scene" data-i="4">
+          <img class="bg" src="img/d/16-lg.jpg" alt="" loading="lazy">
+          <div class="tint" style="background:#8d4fc4"></div>
+          <div class="shade"></div>
+          <div class="sc-arch"><img src="img/d/17.jpg" alt="" loading="lazy"></div>
+          <div class="sc-num" aria-hidden="true">2027</div>
+          <div class="sc-copy">
+            <span class="ch">Chapter five · 2027</span>
+            <h3 class="sc-title"><span class="ln"><span>Yes to</span></span><span class="ln"><span><em>forever</em></span></span></h3>
+            <p>From two strangers at a birthday party to two hearts becoming one. It hasn’t always been perfect, but it has always been ours, and we would love for you to be there as we say “I do.”</p><div class="sc-cta"><span class="sc-date">Saturday, 13 February 2027 · Lagos</span><a class="btn light" href="#rsvp">RSVP now</a></div>
+          </div>
+        </div>
+        <div class="st-rail"><span class="t">Our love story</span><span class="st-bar"><i id="stBar"></i></span><ol id="stRail"><li>2019</li><li>2020</li><li>2022</li><li>2024</li><li>2027</li></ol></div>
+        <div class="st-hint" id="stHint">Scroll to begin</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events" class="band">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Save the date</p>
+        <h2>The Celebration</h2>
+        <div class="scratch" id="scratch">
+          <div class="scratch-date">
+            <span class="sd-day">Saturday</span>
+            <span class="sd-big">13 <i>February</i> 2027</span>
+            <span class="sd-time">10AM prompt · Lagos</span>
+          </div>
+          <canvas id="scratchCanvas" aria-hidden="true"></canvas>
+        </div>
+        <p class="scratch-hint" id="scratchHint">Scratch the card to reveal the date</p>
+      </div>
+      <div class="events">
+        <div class="event">
+          <span class="pill">Wedding Service</span>
+          <h3>Grace Chapel, Lekki</h3>
+          <dl><dt>Time</dt><dd>10:00 AM prompt</dd><dt>Address</dt><dd>12 Admiralty Way, Lekki Phase 1, Lagos</dd></dl>
+        </div>
+        <div class="event">
+          <span class="pill">Reception Follows</span>
+          <h3>The Orchid Hall</h3>
+          <dl><dt>Time</dt><dd>Immediately after the service</dd><dt>Address</dt><dd>5 Ozumba Mbadiwe Avenue, Victoria Island, Lagos</dd></dl>
+        </div>
+      </div>
+      <div class="timeline" aria-label="Order of the day">
+        <div class="t"><i></i><b>9:30 AM</b><span>Guests seated</span></div>
+        <div class="t"><i></i><b>10:00 AM</b><span>Wedding service</span></div>
+        <div class="t"><i></i><b>1:00 PM</b><span>Photos with the couple</span></div>
+        <div class="t"><i></i><b>2:00 PM</b><span>Reception begins</span></div>
+        <div class="t"><i></i><b>4:00 PM</b><span>Cake, toasts &amp; dancing</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOURS -->
+  <section id="dress">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">What to wear</p>
+        <h2>Colours of the Day</h2>
+      </div>
+      <div class="colours">
+        <div class="chip"><i style="background:#FFFFFF"></i><span>White</span></div>
+        <div class="chip"><i style="background:#D86BA3"></i><span>Onion Pink</span></div>
+        <div class="chip"><i style="background:#4A1027"></i><span>Burgundy</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="gal">
+    <div class="gal-track" id="galTrack">
+      <div class="gal-stage" id="galStage">
+        <div class="gal-top">
+          <div><p class="eyebrow">Pre-wedding shoot</p><h2>The <em>Gallery</em></h2></div>
+          <div class="gal-meta"><span>Four looks · 18 photos</span><span>Tap any photo to view or save it</span></div>
+        </div>
+        <div class="gal-row gallery" id="galRow">
+          <div class="gal-label"><span class="n">01</span><h3>The <em>Traditional</em></h3><p>Where two families became one.</p></div>
+          <button class="g gt up" type="button" data-i="0"><img fetchpriority="low" src="img/d/09.jpg" data-lg="img/d/09-lg.jpg" alt="Couple in Igbo traditional attire" draggable="false"><span class="cap">No. 01</span></button>
+          <button class="g" type="button" data-i="1"><img fetchpriority="low" src="img/d/10.jpg" data-lg="img/d/10-lg.jpg" alt="Couple in Igbo traditional attire, holding hands" draggable="false"><span class="cap">No. 02</span></button>
+          <button class="g gt dn" type="button" data-i="2"><img fetchpriority="low" src="img/d/15.jpg" data-lg="img/d/15-lg.jpg" alt="Couple in matching lion print" draggable="false"><span class="cap">No. 03</span></button>
+          <button class="g gs up" type="button" data-i="3"><img fetchpriority="low" src="img/d/16.jpg" data-lg="img/d/16-lg.jpg" alt="Couple in red traditional attire" draggable="false"><span class="cap">No. 04</span></button>
+          <button class="g gt up" type="button" data-i="4"><img loading="lazy" src="img/d/17.jpg" data-lg="img/d/17-lg.jpg" alt="Couple in burgundy aso-oke" draggable="false"><span class="cap">No. 05</span></button>
+          <button class="g gt dn" type="button" data-i="5"><img loading="lazy" src="img/d/18.jpg" data-lg="img/d/18-lg.jpg" alt="Couple in red aso-oke" draggable="false"><span class="cap">No. 06</span></button>
+          <div class="gal-label"><span class="n">02</span><h3>In <em>Royalty</em></h3><p>Dressed for the occasion, crowned for each other.</p></div>
+          <button class="g gt up" type="button" data-i="6"><img loading="lazy" src="img/d/11.jpg" data-lg="img/d/11-lg.jpg" alt="Bride in orange aso-oke" draggable="false"><span class="cap">No. 07</span></button>
+          <button class="g" type="button" data-i="7"><img loading="lazy" src="img/d/12.jpg" data-lg="img/d/12-lg.jpg" alt="Bride in green aso-oke" draggable="false"><span class="cap">No. 08</span></button>
+          <button class="g gs dn" type="button" data-i="8"><img loading="lazy" src="img/d/13.jpg" data-lg="img/d/13-lg.jpg" alt="Groom in red Isiagu" draggable="false"><span class="cap">No. 09</span></button>
+          <button class="g gt up" type="button" data-i="9"><img loading="lazy" src="img/d/14.jpg" data-lg="img/d/14-lg.jpg" alt="Groom in black traditional attire" draggable="false"><span class="cap">No. 10</span></button>
+          <div class="gal-label"><span class="n">03</span><h3>Denim <span class="af">&amp;</span> <em>White</em></h3><p>Our easy, everyday kind of love.</p></div>
+          <button class="g gt up" type="button" data-i="10"><img loading="lazy" src="img/d/01.jpg" data-lg="img/d/01-lg.jpg" alt="Couple in all white, seated" draggable="false"><span class="cap">No. 11</span></button>
+          <button class="g" type="button" data-i="11"><img loading="lazy" src="img/d/02.jpg" data-lg="img/d/02-lg.jpg" alt="Couple in white shirts and denim" draggable="false"><span class="cap">No. 12</span></button>
+          <button class="g gt dn" type="button" data-i="12"><img loading="lazy" src="img/d/04.jpg" data-lg="img/d/04-lg.jpg" alt="Couple in white shirts, arm in arm" draggable="false"><span class="cap">No. 13</span></button>
+          <button class="g gs up" type="button" data-i="13"><img loading="lazy" src="img/d/05.jpg" data-lg="img/d/05-lg.jpg" alt="Couple in white tees and denim" draggable="false"><span class="cap">No. 14</span></button>
+          <button class="g gt up" type="button" data-i="14"><img loading="lazy" src="img/d/06.jpg" data-lg="img/d/06-lg.jpg" alt="Couple in white shirts and denim" draggable="false"><span class="cap">No. 15</span></button>
+          <button class="g gt dn" type="button" data-i="15"><img loading="lazy" src="img/d/07.jpg" data-lg="img/d/07-lg.jpg" alt="Couple in all white, embracing" draggable="false"><span class="cap">No. 16</span></button>
+          <div class="gal-label"><span class="n">04</span><h3>My <em>World</em></h3><p>Choosing each other, over and over again.</p></div>
+          <button class="g gt" type="button" data-i="16"><img loading="lazy" src="img/d/08.jpg" data-lg="img/d/08-lg.jpg" alt="Couple in matching brown" draggable="false"><span class="cap">No. 17</span></button>
+          <button class="g gt dn" type="button" data-i="17"><img loading="lazy" src="img/d/03.jpg" data-lg="img/d/03-lg.jpg" alt="Couple in red and black" draggable="false"><span class="cap">No. 18</span></button>
+        </div>
+        <div class="gal-foot"><span id="galNow">01 Traditional</span><span class="gal-bar"><i id="galBar"></i></span><span id="galHint">Keep scrolling</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp" class="rsvp">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Kindly respond</p>
+        <h2>RSVP</h2>
+        <p>Call or message either number below to confirm your attendance.</p>
+      </div>
+      <div class="phones">
+        <div class="phone"><b id="ph1">0901 000 0213</b><button type="button" data-copy="ph1">Copy</button></div>
+        <div class="phone"><b id="ph2">0802 000 0227</b><button type="button" data-copy="ph2">Copy</button></div>
+      </div>
+      <p class="or">or reply here</p>
+      <form id="rsvpForm" novalidate>
+        <div class="field"><label for="r-name">Full name</label><input id="r-name" name="name" required placeholder="Your name"></div>
+        <div class="field"><label for="r-phone">Phone number</label><input id="r-phone" name="phone" type="tel" placeholder="080..."></div>
+        <fieldset class="field full" style="border:0;padding:0;margin:0">
+          <legend class="legend" style="margin-bottom:8px">Will you attend?</legend>
+          <div class="choice">
+            <label><input type="radio" id="r-yes" name="attend" value="yes" checked> Joyfully accept</label>
+            <label><input type="radio" id="r-no" name="attend" value="no"> Regretfully decline</label>
+          </div>
+        </fieldset>
+        <div class="field full"><label for="r-event">Attending</label>
+          <select id="r-event" name="event"><option>Service &amp; reception</option><option>Wedding service only</option><option>Reception only</option></select></div>
+        <div class="field full"><label for="r-msg">A note for the couple (optional)</label><textarea id="r-msg" name="msg"></textarea></div>
+        <button class="btn light" type="submit">Send RSVP</button>
+      </form>
+      <div class="thanks" id="thanks" hidden>
+        <span class="s">Thank you</span>
+        <h3 id="thanksMsg">We can't wait to celebrate with you.</h3>
+        <button class="btn light" id="again" type="button" style="justify-self:center;margin-top:10px">Edit response</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFTS -->
+  <section id="gifts">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Registry</p>
+        <h2>Your Presence Is Enough</h2>
+        <p class="narrow muted">Having you with us is the greatest gift. If you would still like to bless us, here are a few ways.</p>
+      </div>
+      <div class="gifts">
+        <div class="gift">
+          <span class="pill">Naira · Nigeria</span>
+          <h3>Naira account</h3>
+          <dl class="acct">
+            <dt>Account name</dt><dd>Ada Okafor</dd>
+            <dt>Account no.</dt><dd class="num"><span id="ngAcct">0000000000</span><button class="mini" type="button" data-copy="ngAcct">Copy</button></dd>
+            <dt>Bank</dt><dd>Your bank here</dd>
+          </dl>
+        </div>
+        <div class="gift">
+          <span class="pill">USD · International</span>
+          <h3>Dollar account</h3>
+          <dl class="acct">
+            <dt>Account name</dt><dd>Tunde Bakare</dd>
+            <dt>Account no.</dt><dd class="num"><span id="usAcct">0000000000</span><button class="mini" type="button" data-copy="usAcct">Copy</button></dd>
+            <dt>Bank</dt><dd>Your bank here</dd>
+            <dt>Account type</dt><dd>Domiciliary (USD)</dd>
+          </dl>
+        </div>
+      </div>
+      <p class="gift-note muted">Physical gifts are also welcome at the reception.<br><small>Demo site: sample account details shown.</small></p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="band">
+    <div class="wrap narrow">
+      <div class="head">
+        <p class="eyebrow">Good to know</p>
+        <h2>Questions</h2>
+      </div>
+      <div class="faq">
+        <details><summary>What time should I arrive?</summary><p>The wedding service starts at 10AM prompt. Please be seated by 9:30AM.</p></details>
+        <details><summary>Can I bring a plus-one?</summary><p>Yes. Our wedding is open to everyone, so feel free to come along with family and friends.</p></details>
+        <details><summary>Where can out-of-town guests stay?</summary><p>We have made provisions for guests travelling in. Please call 0901 000 0213 or 0802 000 0227 before you travel and we will sort out your stay.</p></details>
+        <details><summary>Who do I contact on the day?</summary><p>Call 0901 000 0213 or 0802 000 0227.</p></details>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-dl" id="lbDl" type="button">↓ Save photo</button>
+  <button class="lb-x" id="lbX" type="button" aria-label="Close">Close</button>
+  <button class="lb-nav prev" id="lbPrev" type="button" aria-label="Previous photo">‹</button>
+  <img id="lbImg" alt="">
+  <button class="lb-nav next" id="lbNext" type="button" aria-label="Next photo">›</button>
+  <span class="lb-count" id="lbCount"></span>
+</div>
+
+
+<footer class="foot">
+  <div class="mq" aria-hidden="true"><span>Ada <em class="af">&amp;</em> Tunde <b>✦</b> 13 · 02 · 2027 <b>✦</b> Lagos <b>✦</b></span><span>Ada <em class="af">&amp;</em> Tunde <b>✦</b> 13 · 02 · 2027 <b>✦</b> Lagos <b>✦</b></span><span>Ada <em class="af">&amp;</em> Tunde <b>✦</b> 13 · 02 · 2027 <b>✦</b> Lagos <b>✦</b></span><span>Ada <em class="af">&amp;</em> Tunde <b>✦</b> 13 · 02 · 2027 <b>✦</b> Lagos <b>✦</b></span></div>
+  <div class="wrap foot-main">
+    <div class="foot-sign">
+      <div class="seal-mini" aria-hidden="true"><span>A<i>&amp;</i>T</span></div>
+      <p>We can’t wait to celebrate with you.</p>
+      <span class="days" id="fDays">— days to go</span>
+    </div>
+    <div class="foot-col">
+      <h4>The day</h4>
+      <span>Saturday, 13 February 2027</span>
+      <span>10AM prompt</span>
+      <span>Lekki, Lagos</span>
+    </div>
+    <div class="foot-col">
+      <h4>RSVP &amp; enquiries</h4>
+      <b>0901 000 0213</b>
+      <b>0802 000 0227</b>
+    </div>
+    <div class="foot-col">
+      <h4>Explore</h4>
+      <a href="#invitation">Invitation</a>
+      <a href="#story">Our story</a>
+      <a href="#events">The day</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#gifts">Registry</a>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span class="hash">#AdaTee27</span>
+    <span>Ada Okafor &amp; Tunde Bakare</span>
+    <a class="totop" href="#home">Back to top ↑</a>
+  </div>
+  <p class="credit">Demo wedding website · Designed &amp; built by Vincent Chukwu, Product designer · <a href="https://wa.me/2349062185004?text=Hi%20Vincent%2C%20I%20saw%20your%20wedding%20website%20demo%20and%20I%27d%20love%20one%20for%20my%20wedding." target="_blank" rel="noopener">Get one for your wedding ↗</a></p>
+</footer>
+
+<script>
+// sealed gate
+document.body.classList.add('sealed');
+const gate=document.getElementById('gate');
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.getElementById('seal').addEventListener('click',()=>{
+  gate.classList.add('open');
+  setTimeout(()=>{gate.hidden=true;document.body.classList.remove('sealed')},reduce?0:1400);
+});
+
+// menu
+const mb=document.getElementById('menuBtn'),links=document.getElementById('links');
+mb.addEventListener('click',()=>{const o=links.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+links.addEventListener('click',e=>{if(e.target.tagName==='A'){links.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+
+// curved photo reel: slides sit on the inside of a cylinder around the viewer,
+// so frames at the edges swing toward you and look bigger, like a curved gallery wall
+(function(){
+  const reel=document.getElementById('reel'),slides=[...reel.children];
+  let offset=0,last=performance.now(),dragging=false,dragX=0,vel=0;
+  const speed=reduce?0:34; // px of arc per second
+  function frame(now){
+    const dt=Math.min(.05,(now-last)/1000);last=now;
+    if(!dragging){offset+=speed*dt+vel;vel*=.92}
+    const W=reel.clientWidth,cw=slides[0].offsetWidth,step=cw*1.14,total=step*slides.length;
+    const R=Math.max(W*.5,cw*2.1);           // cylinder radius
+    reel.style.perspective=(R*1.45)+'px';
+    slides.forEach((s,i)=>{
+      const arc=((i*step-offset)%total+total)%total-total/2;
+      const th=arc/R;                           // angle around the viewer
+      const x=Math.sin(th)*R*1.05;
+      const z=(1-Math.cos(th))*R*.95;          // edges come toward the viewer
+      const deg=-th*180/Math.PI;
+      const hide=Math.abs(th)>1.4;
+      s.style.transform=`translate3d(${x}px,0,${z}px) rotateY(${deg}deg)`;
+      s.style.opacity=hide?0:1;
+      s.style.zIndex=Math.round(z);
+    });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  reel.addEventListener('pointerdown',e=>{dragging=true;dragX=e.clientX;reel.classList.add('drag');reel.setPointerCapture(e.pointerId)});
+  reel.addEventListener('pointermove',e=>{if(!dragging)return;const d=dragX-e.clientX;offset+=d;vel=d*.5;dragX=e.clientX});
+  const end=()=>{dragging=false;reel.classList.remove('drag')};
+  reel.addEventListener('pointerup',end);reel.addEventListener('pointercancel',end);
+})();
+
+
+// gallery lightbox
+(function(){
+  const items=[...document.querySelectorAll('.gallery .g img')],lb=document.getElementById('lb'),im=document.getElementById('lbImg'),ct=document.getElementById('lbCount');
+  let i=0,opener=null;
+  function show(n){i=(n+items.length)%items.length;im.src=items[i].dataset.lg;im.alt=items[i].alt;ct.textContent=`${i+1} / ${items.length}`}
+  function close(){lb.hidden=true;document.body.style.overflow='';opener&&opener.focus()}
+  document.querySelectorAll('.gallery .g').forEach(b=>b.addEventListener('click',()=>{opener=b;show(+b.dataset.i);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbX').focus()}));
+
+  // save the current photo: phones get the share sheet ("Save Image"), others a normal download
+  const dl=document.getElementById('lbDl');
+  dl.addEventListener('click',async()=>{
+    const url=items[i].dataset.lg,name=`AdaTee27-${String(i+1).padStart(2,'0')}.jpg`,label='↓ Save photo';
+    dl.disabled=true;dl.textContent='Preparing…';
+    try{
+      const blob=await (await fetch(url)).blob();
+      const file=new File([blob],name,{type:'image/jpeg'});
+      if(navigator.canShare&&navigator.canShare({files:[file]})&&matchMedia('(pointer:coarse)').matches){
+        await navigator.share({files:[file],title:'Ada & Tunde · AdaTee 27'}).catch(()=>{});
+      }else{
+        const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();
+        setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
+      }
+      dl.textContent='Saved ✓';
+    }catch(e){window.open(url,'_blank');dl.textContent=label}
+    setTimeout(()=>{dl.textContent=label;dl.disabled=false},1600);
+  });
+  document.getElementById('lbX').onclick=close;
+  document.getElementById('lbPrev').onclick=()=>show(i-1);
+  document.getElementById('lbNext').onclick=()=>show(i+1);
+  lb.addEventListener('click',e=>{if(e.target===lb)close()});
+  document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')close();if(e.key==='ArrowLeft')show(i-1);if(e.key==='ArrowRight')show(i+1)});
+  let sx=null;lb.addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+  lb.addEventListener('touchend',e=>{if(sx==null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>50)show(i+(d<0?1:-1));sx=null});
+})();
+
+
+// love story scenes: each chapter opens through an arch-shaped iris, the photo slowly
+// zooms, title lines rise in, and the inset arch drifts up for depth
+(function(){
+  const track=document.getElementById('storyTrack');if(!track)return;
+  const stage=document.getElementById('storyStage'),scenes=[...track.querySelectorAll('.scene')],N=scenes.length;
+  const bar=document.getElementById('stBar'),rail=[...document.querySelectorAll('#stRail li')],hint=document.getElementById('stHint');
+  const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),ease=t=>1-Math.pow(1-t,3),eio=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const parts=scenes.map(sc=>({bg:sc.querySelector('.bg'),arch:sc.querySelector('.sc-arch'),num:sc.querySelector('.sc-num'),lines:[...sc.querySelectorAll('.ln>span')],rest:[...sc.querySelectorAll('.sc-copy .ch,.sc-copy p,.sc-copy>div')]}));
+  let ticking=false;
+  function render(){
+    ticking=false;
+    const r=track.getBoundingClientRect(),run=track.offsetHeight-stage.offsetHeight;
+    const p=clamp(-r.top/run,0,1),c=p*(N-1);   // 0..N-1, integer = chapter fully shown
+    const W=stage.clientWidth,H=stage.clientHeight,small=W<=760;
+    const ax=small?W-16-W*.17:W-Math.max(20,W*.07)-Math.min(320,Math.max(170,W*.21))/2, ay=small?64+W*.25:H*.5;
+    const maxR=Math.hypot(Math.max(ax,W-ax),Math.max(ay,H-ay))*1.05;
+    scenes.forEach((sc,k)=>{
+      const P=parts[k];
+      // iris: scene k opens during c in [k-1, k-0.25]
+      const open=k===0?1:eio(clamp((c-(k-1))/.75,0,1));
+      sc.style.clipPath=k===0?'none':`circle(${(open*maxR).toFixed(1)}px at ${ax.toFixed(0)}px ${ay.toFixed(0)}px)`;
+      sc.style.zIndex=k;
+      sc.style.visibility=open<=0.001?'hidden':'visible';
+      const local=clamp(c-k+1,0,2); // 0..2 lifetime of this scene
+      P.bg.style.transform=`scale(${(1.18-.09*local).toFixed(4)})`;
+      P.arch.style.transform=`translateY(calc(var(--ay,-50%) + ${((1-open)*120+(local-1)*-60).toFixed(1)}px)) rotate(${((1-open)*6).toFixed(2)}deg)`;
+      if(P.num)P.num.style.transform=`translateY(${((1-local/2)*60).toFixed(1)}px)`;
+      const reveal=k===0?ease(clamp(c*4+1,0,1)):ease(clamp((c-(k-1)-.45)/.4,0,1));
+      P.lines.forEach((ln,j)=>{const t=clamp(reveal*1.25-j*.18,0,1);ln.style.transform=`translateY(${((1-ease(t))*110).toFixed(1)}%)`});
+      P.rest.forEach((el,j)=>{const t=clamp(reveal*1.2-.2-j*.08,0,1);el.style.opacity=t;el.style.transform=`translateY(${((1-t)*18).toFixed(1)}px)`});
+    });
+    bar.style.width=(p*100)+'%';
+    const active=Math.min(N-1,Math.round(c));
+    rail.forEach((li,k)=>li.classList.toggle('on',k===active));
+    hint.style.opacity=p>.02?0:.7;
+  }
+  const req=()=>{if(!ticking){ticking=true;requestAnimationFrame(render)}};
+  addEventListener('scroll',req,{passive:true});addEventListener('resize',req);render();
+})();
+
+
+// gallery hall: vertical scroll moves the row sideways while the stage is pinned
+(function(){
+  const track=document.getElementById('galTrack'),stage=document.getElementById('galStage'),row=document.getElementById('galRow');
+  const bar=document.getElementById('galBar'),now=document.getElementById('galNow'),labels=[...row.querySelectorAll('.gal-label')];
+  const names=['Traditional','Royalty','Denim & White','My World'];
+  const mq=matchMedia('(prefers-reduced-motion:reduce)');
+  let dist=0,ticking=false;
+  function size(){
+    document.getElementById('galHint').textContent=mq.matches?'Swipe to see more →':(innerWidth<=600?'Scroll down':'Keep scrolling');
+    if(mq.matches){track.style.height='';row.style.transform='';return}
+    dist=Math.max(0,row.scrollWidth-stage.clientWidth);
+    track.style.height=(stage.offsetHeight+dist)+'px';render();
+  }
+  function render(){
+    ticking=false;if(mq.matches)return;
+    const r=track.getBoundingClientRect(),p=dist?Math.max(0,Math.min(1,(72-r.top)/dist)):0;
+    row.style.transform=`translate3d(${-p*dist}px,0,0)`;
+    bar.style.width=(p*100)+'%';
+    let g=0;labels.forEach((l,k)=>{if(l.offsetLeft-p*dist<stage.clientWidth*.6)g=k});
+    now.textContent=`0${g+1} ${names[g]}`;
+  }
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(render)}},{passive:true});
+  addEventListener('resize',size);addEventListener('load',size);mq.addEventListener('change',size);size();
+})();
+
+
+// scratch card: a rose-gold foil the guest rubs off to reveal the date
+(function(){
+  const box=document.getElementById('scratch'),cv=document.getElementById('scratchCanvas'),hint=document.getElementById('scratchHint');
+  if(!box)return;const ctx=cv.getContext('2d');let done=false,drawing=false,last=null,moves=0;
+  function paint(){
+    const r=box.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);
+    cv.width=r.width*d;cv.height=r.height*d;ctx.setTransform(d,0,0,d,0,0);
+    const w=r.width,h=r.height,g=ctx.createLinearGradient(0,0,w,h);
+    g.addColorStop(0,'#E9B9C8');g.addColorStop(.35,'#F6DCE4');g.addColorStop(.55,'#D98EA9');g.addColorStop(.8,'#F2CFDB');g.addColorStop(1,'#C9799A');
+    ctx.globalCompositeOperation='source-over';ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    for(let k=0;k<w*h/18;k++){ctx.fillStyle=`rgba(255,255,255,${Math.random()*.25})`;ctx.fillRect(Math.random()*w,Math.random()*h,1,1)}
+    ctx.strokeStyle='rgba(106,20,49,.35)';ctx.lineWidth=1;ctx.strokeRect(10,10,w-20,h-20);
+    ctx.fillStyle='#6A1431';ctx.textAlign='center';ctx.textBaseline='middle';
+    ctx.font='500 12px Jost, sans-serif';ctx.fillText('S C R A T C H   H E R E',w/2,h/2-24);
+    ctx.font='34px "Cormorant Garamond", Georgia, serif';ctx.fillText('✦  A & T  ✦',w/2,h/2+10);
+    ctx.font='400 11px Jost, sans-serif';ctx.fillText('to reveal our wedding date',w/2,h/2+40);
+  }
+  function pos(e){const r=cv.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top}}
+  function scratch(p){
+    ctx.globalCompositeOperation='destination-out';ctx.lineCap='round';ctx.lineJoin='round';ctx.lineWidth=Math.max(36,box.clientWidth*.1);
+    ctx.beginPath();ctx.moveTo((last||p).x,(last||p).y);ctx.lineTo(p.x,p.y);ctx.stroke();last=p;
+    if(++moves%8===0)check();
+  }
+  function check(){
+    const d=ctx.getImageData(0,0,cv.width,cv.height).data;let clear=0,n=0;
+    for(let k=3;k<d.length;k+=4*40){n++;if(d[k]<40)clear++}
+    if(clear/n>.5)reveal();
+  }
+  function reveal(){if(done)return;done=true;cv.classList.add('done');box.classList.add('revealed');hint.textContent='See you there ♥';}
+  cv.addEventListener('pointerdown',e=>{if(done)return;drawing=true;last=null;cv.setPointerCapture(e.pointerId);scratch(pos(e));hint.style.opacity=.5});
+  cv.addEventListener('pointermove',e=>{if(drawing&&!done)scratch(pos(e))});
+  const up=()=>{drawing=false;last=null;if(!done)check()};
+  cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
+  cv.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')reveal()});
+  cv.tabIndex=0;cv.setAttribute('role','button');cv.setAttribute('aria-label','Reveal the wedding date');cv.removeAttribute('aria-hidden');
+  (document.fonts?document.fonts.ready:Promise.resolve()).then(paint);paint();
+  let rw=box.clientWidth;addEventListener('resize',()=>{if(!done&&Math.abs(box.clientWidth-rw)>40){rw=box.clientWidth;paint()}});
+})();
+
+// countdown to 10:00 AM WAT, 13 Feb 2027
+const target=new Date('2027-02-13T10:00:00+01:00').getTime();
+const pad=n=>String(n).padStart(2,'0');
+function tick(){
+  let d=Math.max(0,target-Date.now());
+  const days=Math.floor(d/864e5);d%=864e5;
+  const h=Math.floor(d/36e5);d%=36e5;
+  const m=Math.floor(d/6e4),s=Math.floor((d%6e4)/1e3);
+  document.getElementById('cd-d').textContent=days;
+  const fd=document.getElementById('fDays');if(fd)fd.textContent=days>0?`${days} days to go`:'Today is the day';
+  document.getElementById('cd-h').textContent=pad(h);
+  document.getElementById('cd-m').textContent=pad(m);
+  document.getElementById('cd-s').textContent=pad(s);
+}
+tick();setInterval(tick,1000);
+
+const form=document.getElementById('rsvpForm'),thanks=document.getElementById('thanks');
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const name=document.getElementById('r-name');
+  if(!name.value.trim()){name.focus();name.placeholder='Please enter your name';return}
+  const yes=document.getElementById('r-yes').checked,first=name.value.trim().split(' ')[0];
+  const done=()=>{document.getElementById('thanksMsg').textContent=yes?`See you there, ${first}.`:`We'll miss you, ${first}. Thank you for letting us know.`;form.hidden=true;thanks.hidden=false};
+  // demo: nothing is sent anywhere, the guest just sees the thank-you
+  const btn=form.querySelector('button[type=submit]');btn.disabled=true;btn.textContent='Sending…';
+  setTimeout(()=>{done();btn.disabled=false;btn.textContent='Send RSVP'},700);
+});
+document.getElementById('again').addEventListener('click',()=>{thanks.hidden=true;form.hidden=false});
+
+// copy buttons
+document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',async()=>{
+  const el=document.getElementById(b.dataset.copy),label=b.textContent;
+  try{await navigator.clipboard.writeText(el.textContent.replace(/\s/g,''));b.textContent='Copied'}
+  catch{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected'}
+  setTimeout(()=>b.textContent=label,1800);
+}));
+</script>
+
+</body>
+</html>
